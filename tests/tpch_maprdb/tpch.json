@@ -1,0 +1,67 @@
+{
+    "testId": "tpch_maprdb",
+    "type": "group",
+    "description": "Test tpch SF 0.01 queries via jdbc",
+    "categories": [
+        "smoke"
+    ],
+    "dependencies" : ["maprdb"],
+    "matrices": [
+        {
+            "query-file": ".*.q",
+            "schema": "db.tpch_maprdb",
+            "output-format": "tsv",
+            "expected-file": ".*.e_tsv",
+            "verification-type": [
+                "in-memory"
+            ]
+        }
+    ],
+    "datasources": [
+	{
+	   "mode": "cp",
+	   "src": "Datasources/tpch_maprdb/customer",
+	   "dest": "tpch_maprdb/sf0.01/text/customer"
+	},
+	{
+           "mode": "cp",
+           "src": "Datasources/tpch_maprdb/nation",
+           "dest": "tpch_maprdb/sf0.01/text/nation"
+        },
+ 	{
+           "mode": "cp",
+           "src": "Datasources/tpch_maprdb/lineitem",
+           "dest": "tpch_maprdb/sf0.01/text/lineitem"
+        },
+ 	{
+           "mode": "cp",
+           "src": "Datasources/tpch_maprdb/region",
+           "dest": "tpch_maprdb/sf0.01/text/region"
+        },
+ 	{
+           "mode": "cp",
+           "src": "Datasources/tpch_maprdb/part",
+           "dest": "tpch_maprdb/sf0.01/text/part"
+        },
+ 	{
+           "mode": "cp",
+           "src": "Datasources/tpch_maprdb/partsupp",
+           "dest": "tpch_maprdb/sf0.01/text/partsupp"
+        },
+ 	{
+           "mode": "cp",
+           "src": "Datasources/tpch_maprdb/orders",
+           "dest": "tpch_maprdb/sf0.01/text/orders"
+        },
+ 	{
+           "mode": "cp",
+           "src": "Datasources/tpch_maprdb/supplier",
+           "dest": "tpch_maprdb/sf0.01/text/supplier"
+        },
+        {
+          "mode": "gen",
+          "src": "Datasources/tpch_maprdb/setup.sh",
+          "dest": ""
+        }
+    ]
+}
